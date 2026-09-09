@@ -1,0 +1,27 @@
+{
+    "content": "",
+    "embeds": [
+        {
+            "title": "Worlds",
+            "description": "",
+            "color": 1752220,
+            "thumbnail": {
+                "url": "https://r2.foundryvtt.com/website-static-public/assets/icons/fvtt.png"
+            },
+            "fields": [
+                {{ range $index, $element := . }}
+                    {{ if $index }}, {{ end }}
+                    {
+                        "name": "**{{ $element.Name }}**",
+                        "value": "> Users: {{ range $indexUser, $elementUser := $element.UserNames }}{{ if $indexUser }}, {{ end }}{{ $elementUser }}{{ end }}"
+                    }
+                {{ else }}
+                    {
+                        "name": "",
+                        "value": "Worlds have not been found"
+                    }
+                {{ end }}
+            ]
+        }
+    ]
+}

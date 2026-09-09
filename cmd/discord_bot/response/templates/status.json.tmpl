@@ -1,0 +1,46 @@
+{
+    "content": "",
+    "embeds": [
+        {
+            "title": "Status",
+            "description": "",
+            "color": 1752220,
+            "thumbnail": {
+                "url": "https://r2.foundryvtt.com/website-static-public/assets/icons/fvtt.png"
+            },
+            "fields": [
+                {{ if .IsActive }}
+                    {
+                        "name": "**:one: Status**",
+                        "value": "> World has been started"
+                    },
+                    {
+                        "name": "**:two: World**",
+                        "value": "> {{ .World }}"
+                    },
+                    {
+                        "name": "**:three: System**",
+                        "value": "> {{ .System }}"
+                    },
+                    {
+                        "name": "**:four: SystemVersion**",
+                        "value": "> {{ .SystemVersion }}"
+                    },
+                    {
+                        "name": "**:five: Users number**",
+                        "value": "> {{ .Users }}"
+                    }
+                {{ else }}
+                    {
+                        "name": "**:one: Status**",
+                        "value": "> World has not been started"
+                    },
+                    {
+                        "name": "**:two: Version**",
+                        "value": "> {{ .Version }}"
+                    }
+                {{ end }}
+            ]
+        }
+    ]
+}

@@ -1,0 +1,74 @@
+{
+    "content": "",
+    "embeds": [
+        {
+            "title": "Available commands",
+            "description": "Use /help {command} for more help",
+            "color": 1752220,
+            "thumbnail": {
+                "url": "https://r2.foundryvtt.com/website-static-public/assets/icons/fvtt.png"
+            },
+            "fields": [
+                {
+                    "name": "**:one: Foundry**",
+                    "value": ":point_right: Redirects to Foundry server *link*\n:point_right: **/link**"
+                },
+                {
+                    "name": "**:two: Status**",
+                    "value": ":point_right: Returns current *status* of the server\n:point_right: **/status**"
+                },
+                {
+                    "name": "**:three: Worlds**",
+                    "value": ":point_right: Returns available *worlds* and *users*\n:point_right: **/worlds**"
+                },
+                {
+                    "name": "**:four: Link user**",
+                    "value": ":point_right: Connects *discord user* to *user of chosen Foundry World*\n:point_right: **/link_user {world} {user}**"
+                }
+            ]
+        }
+    ],
+    "components": [
+        {
+            "type": 1,
+            "components": [
+                {
+                    "type": 2,
+                    "label": "Foundry",
+                    "style": 5,
+                    "emoji": {
+                        "name": "🔗"
+                    },
+                    "url": "{{ .Host }}"
+                },
+                {
+                    "type": 2,
+                    "label": "Status",
+                    "style": 2,
+                    "custom_id": "status",
+                    "emoji": {
+                        "name": "⚙"
+                    }
+                },
+                {
+                    "type": 2,
+                    "label": "Worlds",
+                    "style": 2,
+                    "custom_id": "worlds",
+                    "emoji": {
+                        "name": "🌐"
+                    }
+                },
+                {
+                    "type": 2,
+                    "label": "Link user",
+                    "style": 2,
+                    "custom_id": "link_user",
+                    "emoji": {
+                        "name": "👤"
+                    }
+                }
+            ]
+        }
+    ]
+}

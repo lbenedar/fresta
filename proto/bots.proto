@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+package bots;
+
+option go_package = "grpc_bots/";
+
+service BotsGateway {
+  rpc GetPlatforms(PlatformStatusRequest) returns (PlatformStatusResponse);
+  rpc GetStatus(GetStatusRequest) returns (StatusResult);
+  rpc GetWorlds(GetWorldsRequest) returns (stream WorldsResult);
+}
+
+enum StatusType {
+    STATUS_DATA = 0;
+    URL_DATA = 1;
+}
+
+message GetStatusRequest {
+  StatusType type = 1;
+}
+
+message StatusResult {
+  bool success = 1;
+  string error_message = 2;
+  string data = 3; 
+  float latency_ms = 4;
+}
+
+message GetWorldsRequest {
+  int64 world_id = 1;
+  string bot_id = 2;
+}
+
+message WorldsResult {
+  bool success = 1;
+  string error_message = 2;
+  string payload = 3; 
+  float latency_ms = 4;
+}
+
+message PlatformStatusRequest {}
+
+message PlatformStatusResponse {
+  repeated PlatformInfo platforms = 1;
+}
+
+message PlatformInfo {
+  string name = 1;
+  string status = 2;             // online, offline, error
+  int32 connected_users = 3;
+  map<string, bool> features = 4;
+}

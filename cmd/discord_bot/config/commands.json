@@ -1,0 +1,30 @@
+[
+    {
+        "name": "help",
+        "description": "Provides information about bot's available commands",
+        "description_localizations": {
+            "ru": "Предоставляет информацию о всех доступных командах бота"
+        }
+    },
+    {
+        "name": "status",
+        "description": "Provides information about current server's status",
+        "description_localizations": {
+            "ru": "Предоставляет информацию о текущем состоянии сервера"
+        }
+    },
+    {
+        "name": "worlds",
+        "description": "Provides information about worlds and users",
+        "description_localizations": {
+            "ru": "Предоставляет информацию о доступных мирах и пользователях"
+        }
+    },
+    {
+        "name": "link",
+        "description": "Provides url of Foundry's server",
+        "description_localizations": {
+            "ru": "Предоставляет ссылку на сервер Foundry"
+        }
+    }
+]

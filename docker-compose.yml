@@ -1,0 +1,49 @@
+services:
+  # Go Web Application
+  fresta:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: fresta
+      args:
+        APP_VERSION: "${VERSION}"
+        TZ: "Europe/Istanbul"
+    ports:
+      - "${API_PORT:-9090}:${API_PORT:-9090}"
+      - "${GRPC_PORT:-40404}:${GRPC_PORT:-40404}"
+    volumes:
+      - ./db:/api/db:rw
+      - ./cmd/api/api.env:/api/.env:ro
+    environment:
+      - TZ=Europe/Istanbul
+    healthcheck:
+      test: ["CMD", "/bin/grpc_health_probe", "-addr=:40404"]
+      interval: 20s
+      timeout: 10s
+      retries: 3
+      start_period: 1s
+    networks:
+      - backend
+
+  
+  discord-fresta:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+      target: discord-fresta
+      args:
+        APP_VERSION: "$(git describe --tags --always)"
+        TZ: "Europe/Istanbul"
+    depends_on:
+      fresta:
+        condition: service_healthy
+    volumes:
+      - ./cmd/discord_bot/discord.env:/bot/.env:ro
+    environment:
+      - TZ=Europe/Istanbul
+    networks:
+      - backend
+
+networks:
+  backend: 
+    driver: bridge

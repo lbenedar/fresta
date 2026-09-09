@@ -1,0 +1,7 @@
+.vscode
+.env
+cmd/api/api.env
+cmd/discord_bot/discord.env
+example
+db/foundry.db
+TODO
